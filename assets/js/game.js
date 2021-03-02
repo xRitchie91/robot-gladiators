@@ -143,7 +143,11 @@ var startGame = function() {
 
 // start the game when the page loads
 startGame();
-enemyHealth = randomNumber(40, 60);
+
+// generate random damage value base on palyer's attack power
+var damage = randomNumber(playerAttack - 3, playerAttack);
+
+enemyHealth = Math.max(0, enemyHealth - damage);
 
 // function to generate a random numeric value
 var randomNumber = function(min, max) {
@@ -228,5 +232,3 @@ switch (shopOptionPrompt) {
 
     // call shop() again to force player to pick a valid option
     shop();
-    break;
-  }
