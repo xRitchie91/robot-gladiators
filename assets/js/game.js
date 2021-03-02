@@ -1,4 +1,4 @@
-/* Updated code to match snapshot  */
+/* Updated code to match snapshot - end of module 3  */
 /* Game Functions */
 
 // function to start a new game
@@ -11,9 +11,9 @@ var startGame = function() {
     // if player is still alive, keep fight next enemy
     if (playerInfo.health > 0) {
       // let player know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
-      window.alert('Welcom to Robot Gladiators! Round ' + (i + 1));
-      
-      // pick new enemy to fight based on thei ndex of the enemyInfo array
+      window.alert('Welcome to Robot Gladiators! Round ' + (i + 1));
+
+      // pick new enemy to fight based on the index of the enemyInfo array
       var pickedEnemyObj = enemyInfo[i];
 
       // set health for picked enemy
@@ -21,7 +21,7 @@ var startGame = function() {
 
       console.log(pickedEnemyObj);
 
-      // pass the pickedEnemyOb object variable's value into the fight function, where it will assume the value of the enemy parameter
+      // pass the pickedEnemyObj object variable's value into the fight function, where it will assume the vaue of the enemy parameter 
       fight(pickedEnemyObj);
     }
     // if player is not alive, break out of the loop and let endGame function run
@@ -38,14 +38,14 @@ var startGame = function() {
 var endGame = function() {
   window.alert("The game has now ended. Let's see how you did!");
 
-  //if player is still alive, player wins!
+  // if player is still alive, player wins!
   if (playerInfo.health > 0) {
-    window.alert("Great job, you've survived the game! You now have a score of" + playerInfo.money + '.');
+    window.alert("Great job, you've survived the game! You now have a score of" + playerInfo.money + '. ');
   } else {
-    window.alert("You've lost your robot in battle!")
+    window.alert("You've lost your robot in battle!");
   }
-  
-  // ask player if they'd like to play again
+
+  // ask player if thye'd like to play again
   var playAgainConfirm = window.confirm('Would you like to play again?');
 
   if (playAgainConfirm) {
@@ -59,7 +59,7 @@ var endGame = function() {
 var fight = function(enemy) {
   while (playerInfo.health > 0 && enemy.health > 0) {
     // ask player if they'd like to fight or run
-    var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" OR "SKIP" to choose.');
+    var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
 
     // if player picks "skip" confirm and then stop the loop
     if (promptFight === 'skip' || promptFight === 'SKIP') {
@@ -84,65 +84,61 @@ var fight = function(enemy) {
       playerInfo.name +
         ' attacked ' +
         enemy.name +
-        '. ' +
-        enemy.name +
         ' now has ' +
         enemy.health +
         ' health remaining.'
     );
-
+    
     // check enemy's health
-    if (enemy.health <=0) {
+    if (enemy.health <= 0) {
       window.alert(enemy.name + ' has died!');
 
       // award player money for winning
       playerInfo.money = playerInfo.money + 20;
 
       // ask if player wants to use the store before next round
-      var storeConfirm = window.confirm('The fight is over, isit the store before thenext round?');
+      var storeConfirm = window.confirm('The fight is over, visit the sotre before the next round?');
 
       // if yes, take them to the store() function
       if (storeConfirm) {
         shop();
       }
 
-      // leave while() loop since enemy is dead
-      break;
-    } else {
-      window.alert(enemy.name + ' still has ' + enemy.health + ' health left.');
-    }
+        // leave while() loop since enemy is dead
+        break;
+      } else {
+        window.alert(enemy.name + ' still has ' + enemy.health + ' health left.');
+      }
 
-    var damage = randomNumber(enemy.attack - 3, enemy.attack);
+      var damage = randomNumber(enemy.attack - 3, enemy.attack);
 
     // remove enemy's health by subtracting the amount we set in the damage variable
     playerInfo.health = Math.max(0, playerInfo.health - damage);
     console.log(
       enemy.name +
-      ' attacked ' +
-      playerInfo.name +
-      '. ' +
-      playerInfo.name +
-      ' now has ' +
-      playerInfo.health +
-      ' health remaining.' +
+        ' attacked ' +
+        playerInfo.name +
+        ' now has ' +
+        playerInfo.health +
+        ' health remaining.'
     );
 
     // check player's health
     if (playerInfo.health <= 0) {
-      window.alert(playerInfor.name + ' has died!');
+      window.alert(playerInfo.name + ' has died!');
       // leave while() loop if player is dead
       break;
     } else {
       window.alert(playerInfo.name + ' still has ' + playerInfo.health + ' health left.');
     }
-  }    
+  }
 };
 
-// got shop between battles function
+// go to shop between battles function
 var shop = function() {
   // ask player what they'd like to do
   var shopOptionPrompt = window.prompt(
-    'Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one "REFILL", "UPGRADE", or "LEAVE" to make a choice.'
+    'Would you like to REFILL your health, UPGRADE your attac, or LEAVE the store? Please enter one "REFILL", "UPGRADE", or "LEAVE" to make a choice.'
   );
 
   // use switch case to carry out action
@@ -166,7 +162,7 @@ var shop = function() {
   }
 };
 
-//fucntion to generate a random numberic value
+// fucntion to generate a random numeric value
 var randomNumber = function(min, max) {
   var value = Math.floor(Math.random() * (max - min) + min);
 
@@ -174,9 +170,9 @@ var randomNumber = function(min, max) {
 };
 /* End Game Functions */
 
-/* Game Information / Variables */
+/* Game Info / Variables */
 
-// player information
+// player info 
 var playerInfo = {
   name: window.prompt("What is your robot's name?"),
   health: 100,
@@ -220,7 +216,8 @@ console.log(enemyInfo[0]);
 console.log(enemyInfo[0].name);
 console.log(enemyInfo[0]['attack']);
 
-/* End Game Information / Variables */
+/* End Game Info / Variables */
 
 /* Run Game */
 startGame();
+
